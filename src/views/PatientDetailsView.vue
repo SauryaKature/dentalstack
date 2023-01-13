@@ -1,3 +1,3 @@
 <template>
-    <h1>PD</h1>
+    <h1>Patient Details</h1>
 </template>
