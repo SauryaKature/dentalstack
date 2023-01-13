@@ -1,3 +1,3 @@
 <template>
-    <h1>PDG</h1>
+    <h1>Patient Gallery View</h1>
 </template>
