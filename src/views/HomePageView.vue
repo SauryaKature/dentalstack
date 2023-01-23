@@ -151,6 +151,7 @@ export default {
         arrow[i].addEventListener("click", (e) => {
           let arrowParent = e.target.parentElement.parentElement;
           arrowParent.classList.toggle("showMenu");
+          console.log("is this present at this movement")
         });
       }
     },

@@ -107,6 +107,7 @@ const routes = [
             name: 'PatientAppointment',
             component: () => import('../views/PatientAppointmentView.vue')
           },
+          
         ]
       },
     ]

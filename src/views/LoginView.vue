@@ -35,6 +35,8 @@
                     <router-link class="router-link" to="SignUp"> Register</router-link>
 
                     <router-link class="router-link" to="HomePage"> Register</router-link>
+                    
+                    <router-link class="router-link" to="PatientAppointment">Biba</router-link>
                 </div>
             </form>
         </div>
@@ -44,7 +46,8 @@
 </template>
 
 <script>
-
+ const yourFirstVariable = 'hiiii';
+ console.log(yourFirstVariable)
 
 
 </script>
