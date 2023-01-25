@@ -4,18 +4,26 @@
            <thead>
               <tr>
                <th> Name</th>                
-               <th> Email</th>
+               <th> Details</th>
                <th>Phone</th>
+               <th>Email</th>
+               <th>Country</th>                
+               <th> State</th>
                <th>Address</th>
+               <th>Pincode</th>
                <th>&nbsp;&nbsp;&nbsp; Action &nbsp;&nbsp;&nbsp;</th>
               </tr>
            </thead>
            <tbody>
-               <tr v-for="admin in list" :key="admin">
-                   <td > {{(admin.adminName)}}</td>
-                   <td>{{(admin.adminEmail)}}</td>
-                   <td>{{(admin.adminPhone)}}</td>
-                   <td>{{(admin.adminAddress)}}</td>
+               <tr v-for="( business, index ) in lists" :key="index">
+                   <td >{{(business.businessName)}}</td>
+                   <td>{{(business.businessDescription)}}</td>
+                   <td>{{(business.businessPhone)}}</td>
+                   <td>{{(business.businessEmail)}}</td>
+                   <td>{{(business.businessCountry)}}</td>
+                   <td>{{(business.businessState)}}</td>
+                   <td>{{(business.businessAddress)}}</td>
+                   <td>{{(business.businessPincode)}}</td>
                    <td>
                        <router-link class="router-link"  to="WebsocketView"><i class="fa-solid fa-comment"></i></router-link>
                        <router-link class="router-link"  to="GmailSenderView"> <i class="fa-solid fa-envelope"></i></router-link>
@@ -30,25 +38,25 @@
 <script>
 import axios from 'axios';
 export default{
-   name: "AdminListView",
+   name: "businessListView",
    data(){
        return{
-           list:[]
+           lists:[]
        }
    },
    async mounted(){
-       axios.get('http://localhost:8080/alladmins',{
+       axios.get('http://localhost:8080/getAllBusiness',{
        headers:{
        Authorization: 'Bearer' +localStorage.getItem('token')
 
  }
 }).then(response => {
-           this.list = response.data;
+           this.lists = response.data.businesses;
            console.log(response.data);
        })
        .catch(error =>{
            this.errors.push(error);
-           
+           console.log(error);
        })
    },
 
@@ -96,14 +104,14 @@ td, th {
 }
 
 thead th{
-   background-color: #11101d;
+   background-color: #30419b;
    color: rgb(194, 194, 194);
-   border: 1px rgba(255, 255, 255, 0.05) solid;
+   border: rgb(124, 124, 124) 1px solid;
    font-size: 14px;
 }
 
 
 tbody td,tr{
-    border: 1px rgba(255, 255, 255, 0.05) solid;
+   border: rgb(124, 124, 124) 1px solid;
 }
 </style>

@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import LoginView from '../views/LoginView.vue'
+import LoginView from '../views/Login/LoginView.vue'
 
 const routes = [
   {
@@ -10,102 +10,112 @@ const routes = [
   {
     path: '/signup',
     name: 'signup',
-    component: () => import('../views/SignupView.vue')
+    component: () => import('../views/Login/SignupView.vue')
   },
   {
     path: '/HomePage',
     name: 'HomePageView',
-    component: () => import('../views/HomePageView.vue'),
+    component: () => import('../views/Home-Dashboard/HomePageView.vue'),
     children:[
       {
         path: '/Dashboard',
         name: 'Dashboard',
-        component: () => import('../views/DashboardView.vue')
+        component: () => import('../views/Home-Dashboard/DashboardView.vue')
       },
       {
         path: '/Production',
         name: 'Production',
-        component: () => import('../views/ProductionView.vue')
+        component: () => import('../views/Production/ProductionView.vue')
       },
       {
         path: '/AdminRegister',
         name: 'AdminRegister',
-        component: () => import('../views/AdminRegisterView.vue')
+        component: () => import('../views/Admin/AdminRegisterView.vue')
       },
       {
         path: '/AdminList',
         name: 'AdminList',
-        component: () => import('../views/AdminListView.vue')
+        component: () => import('../views/Admin/AdminListView.vue')
       },
       {
-        path: '/DoctorRegister',
-        name: 'DoctorRegister',
-        component: () => import('../views/DoctorRegistrationView.vue')
+        path: '/BusinessRegister',
+        name: 'BusinessRegister',
+        component: () => import('../views/Business/BusinessFormView.vue')
       },
       {
-        path: '/DoctorList',
-        name: 'DoctorList',
-        component: () => import('../views/DoctorListView.vue')
+        path: '/BusinessList',
+        name: 'BusinessList',
+        component: () => import('../views/Business/BusinessListView.vue')
       },
       {
         path: '/ClinicRegister',
         name: 'ClinicRegister',
-        component: () => import('../views/ClinicRegistrationView.vue')
+        component: () => import('../views/Clinics/ClinicRegistrationView.vue')
       },
       {
         path: '/ClinicList',
         name: 'ClinicList',
-        component: () => import('../views/ClinicListView.vue')
+        component: () => import('../views/Clinics/ClinicListView.vue')
+      },
+      {
+        path: '/DoctorRegister',
+        name: 'DoctorRegister',
+        component: () => import('../views/Doctors/DoctorRegistrationView.vue')
+      },
+      {
+        path: '/DoctorList',
+        name: 'DoctorList',
+        component: () => import('../views/Doctors/DoctorListView.vue')
       },
       {
         path: '/PatientRegister',
         name: 'PatientRegister',
-        component: () => import('../views/PatientRegistrationView.vue')
+        component: () => import('../views/Patients/PatientRegistrationView.vue')
       },
       {
         path: '/PatientList',
         name: 'PatientList',
-        component: () => import('../views/PatientListView.vue')
+        component: () => import('../views/Patients/PatientListView.vue')
       },
       {
         path: '/PatientDetailsForm',
         name: 'PatientDetailsForm',
-        component: () => import('../views/PatientDetailsForm.vue'),
+        component: () => import('../views/Patients/PatientDetailsForm.vue'),
         children:[
           {
             path: '/PatientDetails',
             name: 'PatientDetails',
-            component: () => import('../views/PatientDetailsView.vue')
+            component: () => import('../views/Patients/PatientDetailsView.vue')
           },
           {
             path: '/PatientGallery',
             name: 'PatientGallery',
-            component: () => import('../views/PatientGalleryView.vue')
+            component: () => import('../views/Patients/PatientGalleryView.vue')
           },
           {
             path: '/PatientScanFiles',
             name: 'PatientScanFiles',
-            component: () => import('../views/PatientScanFilesView.vue')
+            component: () => import('../views/Patients/PatientScanFilesView.vue')
           },
           {
             path: '/PatientCaseDetails',
             name: 'PatientCaseDetails',
-            component: () => import('../views/PatientCaseDetailsView.vue')
+            component: () => import('../views/Patients/PatientCaseDetailsView.vue')
           },
           {
             path: '/PatientTreatmentPlan',
             name: 'PatientTreatmentPlan',
-            component: () => import('../views/PatientTreatmentPlanView.vue')
+            component: () => import('../views/Patients/PatientTreatmentPlanView.vue')
           },
           {
             path: '/PatientTreatmentTracker',
             name: 'PatientTreatmentTracker',
-            component: () => import('../views/PatientTreatmentTrackerView.vue')
+            component: () => import('../views/Patients/PatientTreatmentTrackerView.vue')
           },
           {
             path: '/PatientAppointment',
             name: 'PatientAppointment',
-            component: () => import('../views/PatientAppointmentView.vue')
+            component: () => import('../views/Patients/PatientAppointmentView.vue')
           },
           
         ]

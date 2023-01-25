@@ -2,7 +2,7 @@
 	<div class="pDetails">
 		<div class="profile-details">
 			<div class="profile-content">
-				<img src="../assets/user.jpeg" alt="profileImg">
+				<img src="./Images/user.jpeg" alt="profileImg">
 			</div>
 			<div class="name-job">
 				<div class="profile_name">Rishang Jain</div>
@@ -40,7 +40,7 @@ body {
 .pDetails {
 	height: 250px;
 	width: 100%;
-	border: 1px solid black;
+	border: 1px solid rgb(187, 187, 187);
 	border-radius: 16px;
 }
 .profile-details{
@@ -88,10 +88,10 @@ body {
 	height: 40px;
 	margin-left: 20px;
 	background: #fff;
-	padding-top: 8px;
+	padding-top: 11px;
 	border: 2px solid #ACACA6;
 	border-radius: 5%;
-	transition: background 3s;
+	transition: background 2s;
 	border-radius: 35px;
 	font-size: 70%;
 }
@@ -109,26 +109,28 @@ span{display: none;}
 }
 .step.completed {
 	border: 2px solid #141322;
-	background: #22203a;
+	background: #272541;
 	color: white;
 	padding-top: 0px;
+
 }
 
 .progress {
-	position: absolute;
-	left: 32px;
-	width: 100%;
-	height: 55%;
-	z-index: -1;
+    position: absolute;
+    left: 40px;
+    top: 20px;
+    width: 93%;
+    height: 10%;
+    z-index: -1;
 }
 
 .percent {
 	position: absolute;
 	width: 0;
 	height: 100%;
-	border-bottom: 5px solid #141322;
+	border-bottom: 10px solid #141322;
 	z-index: 1;
-	transition: width 1s;
+	transition: width 0.5s;
 }
 </style>
 

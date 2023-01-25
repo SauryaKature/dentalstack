@@ -7,19 +7,15 @@
             </tr>
             <tr>
                 <td class="firsttd"> <lable class="lable" for="">First Name</lable></td>
-                <td> <input type="text" v-model="first_name"  placeholder="Enter First Name" required></td>
-            </tr>
-            <tr>
-                <td class="firsttd"><lable class="lable" for="">Last Name</lable></td>
-                <td> <input type="text" v-model="last" placeholder="Enter Last Name" ></td>
+                <td> <input type="text" v-model="doctorName"  placeholder="Enter First Name" required></td>
             </tr>
             <tr>
                 <td class="firsttd"><lable class="lable" for="">Email</lable></td>
-                <td><input type="email" v-model="email" placeholder="Enter Email" required></td>
+                <td><input type="email" v-model="doctorEmail" placeholder="Enter Email" required></td>
             </tr>
             <tr> 
                 <td class="firsttd"><lable class="lable" for="">Phone</lable></td>
-                <td><input v-model="phone" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "10"  placeholder="Enter Phone Number" /></td>
+                <td><input v-model="doctorPhone" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "10"  placeholder="Enter Phone Number" /></td>
                 <!-- <td><input type="number" v-model="phone" placeholder="Enter Phone Number"  required ></td> -->
             </tr>
             <tr>
@@ -33,39 +29,39 @@
             </tr>
             <tr>
                 <td class="firsttd"><lable class="lable" for="">Certification No. </lable></td>
-                <td><input type="text" v-model="certificatenumber" placeholder="CertificationNumber" required></td>
+                <td><input type="text" v-model="doctorCertificatenumber" placeholder="CertificationNumber" required></td>
             </tr>
             <tr>
                 <td class="firsttd"><lable class="lable" for="">Country</lable></td>
-                <td><input type="text" v-model="country" placeholder="Enter Country" required></td>
+                <td><input type="text" v-model="doctorCountry" placeholder="Enter Country" required></td>
             </tr>
             <tr>
                 <td class="firsttd"><lable class="lable" for="">State</lable></td>
-                <td><input type="text"  v-model="state" placeholder="Enter State" required></td>
+                <td><input type="text"  v-model="doctorState" placeholder="Enter State" required></td>
             </tr>
             <tr>
                 <td class="firsttd"><lable class="lable" for="">Pin Code</lable></td>
-                <td><input v-model="pincode" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "6"  placeholder="Enter Pincode"/></td>
+                <td><input v-model="doctorPincode" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "6"  placeholder="Enter Pincode"/></td>
                 <!-- <td><input type="number" v-model="pincode" required></td> -->
             </tr>
             <tr>
                 <td class="firsttd"><lable class="lable" for="">Specialization</lable></td>
                 <td>
-                    <input type="text" v-model="specialization" v-validate.initial="state" data-rules="required|alpha|min:3" placeholder="Enter Specialization" >
+                    <input type="text" v-model="doctorSpecialization" v-validate.initial="state" data-rules="required|alpha|min:3" placeholder="Enter Specialization" >
                 </td>
             </tr>
             <tr>
                 <td class="firsttd"><lable class="lable" for="">User Name</lable></td>
-                <td> <input type="text" v-model="userName"  placeholder="Enter User Name" required></td>
+                <td> <input type="text" v-model="doctorUserName"  placeholder="Enter User Name" required></td>
                 
             </tr>
             <tr>
                 <td class="firsttd"><lable class="lable" for="">password</lable></td>
-                <td><input type="password" v-model="password" v-validate.initial="password" data-rules="required|passphrase" placeholder="Enter Password" required></td>
+                <td><input type="password" v-model="doctorPassword" v-validate.initial="password" data-rules="required|passphrase" placeholder="Enter Password" required></td>
             </tr>
             <tr>
                 <td class="firsttd"><lable class="lable" for="">Confirm Password</lable></td>
-                <td><input type="text" v-model="confirm" v-validate.initial="confirm" data-rules="required|passphrase" placeholder="Confirm Password" required></td>
+                <td><input type="text" v-model="doctorConfirmPassword" v-validate.initial="confirm" data-rules="required|passphrase" placeholder="Confirm Password" required></td>
             </tr>            
             <tr>
                 <td class="firsttd"><lable class="lable" for="">Status</lable></td>
@@ -96,38 +92,38 @@ export default{
 
     data(){
         return{
-            username:'',
-            first_name:'',
-            last_name:'',
-            email:'',
-            phone:'',
+            doctorName:'',
+            doctorEmail:'',
+            doctorPhone:'',
+            doctorCertificatenumber:'',
             selected:'External',
-            certificatenumber:'',
-            country:'',
-            state:'',
-            pincode:'',
-            password:'',
-            confirm:'',
-            select:'Eabled',
-            formSubmitted: false
+            doctorCountry:'',
+            doctorState:'',
+            doctorPincode:'',
+            doctorSpecialization:'',
+            doctorUserName:'',
+            doctorPassword:'',
+            doctorConfirmPassword:'',
+            select:'Eabled'
         }
     },
     methods:{
       async  signUp(){
-           let result = await axios.post("http://localhost:8080/saveDoctor",{
-            email: this.email,
-           password: this.password, 
-           first_name: this.first_name,
-           last_name: this.last_name,
-           phone: this.phone,
-           doctorType: this.selected,
-           certificatenumber: this.certificatenumber,
-           country: this.country,
-           state: this.state,
-           pincode:this.pincode,
-           confirm: this.confirm,
-           status: this.select,
-           formSubmitted: this.formSubmitted,
+          
+            let result = await axios.post("http://localhost:8080/saveDoctor",{
+            doctorName: this.doctorName,
+            doctorEmail: this.doctorEmail, 
+            doctorPhone: this.doctorPhone,
+            doctorType: this.selected,
+           doctorCertificatenumber: this.doctorCertificatenumber,
+           doctorCountry: this.doctorCountry,
+           doctorState: this.doctorState,
+           doctorPincode:this.doctorPincode,
+           doctorSpecialization: this.doctorSpecialization,
+           doctorUserName: this.doctorUserName,
+           doctorPassword: this.doctorPassword,
+           doctorConfirmPassword: this.doctorConfirmPassword,
+           doctorStatus: this.select,
            });
 
            console.warn(result);
@@ -135,16 +131,8 @@ export default{
             alert("sign_up succesfully");
             localStorage.setItem("user_info",JSON.stringify(result.data));
            }
+           
     },
-    validateBeforeSubmit() {
-        this.$validator.validateAll();
-        if (!this.errors.any()) {
-            this.submitForm()
-        }
-      },
-    submitForm(){
-      this.formSubmitted = true
-    }
   }
 }
 </script>

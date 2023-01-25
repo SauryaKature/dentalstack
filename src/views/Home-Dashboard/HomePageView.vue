@@ -12,13 +12,13 @@
     <div class="sidebar close">
       <div class="logo-details">
         <!-- <i class='bx bxl-c-plus-plus'></i> -->
-        <span class="logo_name"><img src="../assets/logo.png"
+        <span class="logo_name"><img src="./Icons/logo.png"
             style="height: 50px; filter: invert(); position: relative; top: 20px; left: 30px;" alt=""></span>
       </div>
       <ul class="nav-links">
         <li>
           <button>
-            <img src="../assets/Icons/home.png" alt="" class="icons">
+            <img src="./Icons/home.png" alt="" class="icons">
             <router-link to="Dashboard" class="link_name">Dashboard</router-link>
           </button>
           <ul class="sub-menu blank">
@@ -28,7 +28,7 @@
         </li>
         <li>
           <button>
-            <img src="../assets/Icons/mass-production.png" alt="" class="icons">
+            <img src="./Icons/mass-production.png" alt="" class="icons">
             <router-link to="Production" class="link_name">Production</router-link>
           </button>
           <ul class="sub-menu blank">
@@ -38,36 +38,38 @@
         </li>
         <li>
           <div class="iocn-link">
-            <button >
-              <img src="../assets/Icons/Admin.gif" alt="" class="icon">
+            <button>
+              <img src="./Icons/Admin.gif" alt="" class="icon">
               <b class="link_name">Admin</b>
             </button>
             <i class='bx bxs-chevron-down arrow'></i>
           </div>
           <ul class="sub-menu">
             <li><button class="link_name"><router-link class="sidelist" to="#">Admin</router-link></button></li>
-            <li><button><router-link to="AdminRegister" class="dropdown-containt">Admin Registration</router-link></button></li>
+            <li><button><router-link to="AdminRegister" class="dropdown-containt">Admin
+                  Registration</router-link></button></li>
             <li><button><router-link to="AdminList" class="dropdown-containt">Admin List</router-link></button></li>
           </ul>
         </li>
         <li>
           <div class="iocn-link">
-            <button >
-              <img src="../assets/Icons/Business.gif" alt="" class="icon">
+            <button>
+              <img src="./Icons/Business.gif" alt="" class="icon">
               <b class="link_name">Business</b>
             </button>
             <i class='bx bxs-chevron-down arrow'></i>
           </div>
           <ul class="sub-menu">
             <li><button class="link_name"><router-link class="sidelist" to="#">Business</router-link></button></li>
-            <li><button><router-link to="AdminRegister" class="dropdown-containt">Business Registration</router-link></button></li>
+            <li><button><router-link to="AdminRegister" class="dropdown-containt">Business
+                  Registration</router-link></button></li>
             <li><button><router-link to="AdminList" class="dropdown-containt">Business List</router-link></button></li>
           </ul>
         </li>
         <li>
           <div class="iocn-link">
             <button>
-              <img src="../assets/Icons/DoctorIcon.gif" alt="" class="icon">
+              <img src="./Icons/DoctorIcon.gif" alt="" class="icon">
               <span class="link_name">Doctors</span>
             </button>
             <i class='bx bxs-chevron-down arrow'></i>
@@ -82,7 +84,7 @@
         <li>
           <div class="iocn-link">
             <button>
-              <img src="../assets/Icons/ClinicIcon.gif" alt="" class="icon">
+              <img src="./Icons/ClinicIcon.gif" alt="" class="icon">
               <span class="link_name">Clinics</span>
             </button>
             <i class='bx bxs-chevron-down arrow'></i>
@@ -97,7 +99,7 @@
         <li>
           <div class="iocn-link">
             <button>
-              <img src="../assets/Icons/patient.png" alt="" class="icons">
+              <img src="./Icons/patient.png" alt="" class="icons">
               <span class="link_name">Patients</span>
             </button>
             <i class='bx bxs-chevron-down arrow'></i>
@@ -114,7 +116,7 @@
         <li>
           <div class="profile-details">
             <div class="profile-content">
-              <img src="../assets/user.jpeg" alt="profileImg">
+              <img src="./Icons/user.jpeg" alt="profileImg">
             </div>
             <div class="name-job">
               <div class="profile_name">Rishang Jain</div>
@@ -128,7 +130,7 @@
     <section class="home-section">
       <div class="home-content">
         <i class='bx bx-menu' @click="open()" style="color: white;"></i>
-        <img src="../assets/logo.png" style="height: 50px; filter: invert();" alt="">
+        <img src="./Icons/logo.png" style="height: 50px; filter: invert();" alt="">
       </div>
       <hr style="color: white;">
       <article>
@@ -142,24 +144,24 @@
 
 <script>
 export default {
-  mounted(){
-        if (this.$router === `/`) {
-          this.$router.push({path:`/Dashboard`})
-        }
-        let arrow = document.querySelectorAll(".arrow");
-      for (var i = 0; i < arrow.length; i++) {
-        arrow[i].addEventListener("click", (e) => {
-          let arrowParent = e.target.parentElement.parentElement;
-          arrowParent.classList.toggle("showMenu");
-          console.log("is this present at this movement")
-        });
-      }
-    },
+  mounted() {
+    if (this.$router === `/`) {
+      this.$router.push({ path: `/Dashboard` })
+    }
+    let arrow = document.querySelectorAll(".arrow");
+    for (var i = 0; i < arrow.length; i++) {
+      arrow[i].addEventListener("click", (e) => {
+        let arrowParent = e.target.parentElement.parentElement;
+        arrowParent.classList.toggle("showMenu");
+        console.log("is this present at this movement")
+      });
+    }
+  },
   methods: {
     open() {
       document.querySelector(".sidebar").classList.toggle("close");
     },
-  
+
   }
 }
 
@@ -179,9 +181,10 @@ export default {
   font-family: 'Poppins', sans-serif;
 }
 
-body, article {
- width: 100%;
- height: 100%;
+body,
+article {
+  width: 100%;
+  height: 100%;
 }
 
 .sidebar {
@@ -343,7 +346,7 @@ button {
 .sidebar.close .nav-links li button .link_name {
   opacity: 0;
   pointer-events: none;
-  
+
 }
 
 .sidebar .nav-links li .sub-menu {
@@ -472,7 +475,8 @@ button {
 
 .home-section {
   position: relative;
-  background: #211f38;;
+  background: #211f38;
+  ;
   left: 260px;
   width: calc(100% - 260px);
   transition: all 0.5s ease;
@@ -530,7 +534,7 @@ button {
   .home-section {
     left: 240px;
     width: calc(100% - 240px);
- 
+
   }
 
   .sidebar.close~.home-section {

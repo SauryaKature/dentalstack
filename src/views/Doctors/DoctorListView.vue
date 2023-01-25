@@ -22,13 +22,13 @@
             </thead>
             <tbody>
                 <tr v-for="doctorList in list" :key="doctorList">
-                    <td > {{(doctorList.first_name)}} {{(doctorList.last_name)}}</td>
-                    <td>{{(doctorList.phone)}}</td>
-                    <td>{{(doctorList.specialization)}}</td>
-                    <td>{{(doctorList.email)}}</td>
+                    <td > {{(doctorList.doctorName)}}</td>
+                    <td>{{(doctorList.doctorPhone)}}</td>
+                    <td>{{(doctorList.doctorSpecialization)}}</td>
+                    <td>{{(doctorList.doctorEmail)}}</td>
                     <td>{{(doctorList.doctorType)}}</td>                   
-                    <td>{{(doctorList.state)}}</td>
-                    <td>{{(doctorList.status)}}</td>
+                    <td>{{(doctorList.doctorState)}}</td>
+                    <td>{{(doctorList.doctorStatus)}}</td>
                     <td>
                         <router-link class="router-link"  to="WebsocketView"><i class="fa-solid fa-comment"></i></router-link>
                         <router-link class="router-link"  to="GmailSenderView"> <i class="fa-solid fa-envelope"></i></router-link>

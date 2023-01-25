@@ -7,6 +7,7 @@
                <th> Email</th>
                <th>Phone</th>
                <th>Address</th>
+               <th>Date Added</th>
                <th>&nbsp;&nbsp;&nbsp; Action &nbsp;&nbsp;&nbsp;</th>
               </tr>
            </thead>
@@ -16,6 +17,7 @@
                    <td>{{(admin.adminEmail)}}</td>
                    <td>{{(admin.adminPhone)}}</td>
                    <td>{{(admin.adminAddress)}}</td>
+                   <td>{{(admin.adminDateOfCreation)}}</td>
                    <td>
                        <router-link class="router-link"  to="WebsocketView"><i class="fa-solid fa-comment"></i></router-link>
                        <router-link class="router-link"  to="GmailSenderView"> <i class="fa-solid fa-envelope"></i></router-link>

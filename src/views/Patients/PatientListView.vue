@@ -22,9 +22,9 @@
             </thead>
             <tbody>
                 <tr v-for="PatientList in list" :key="PatientList">
-                    <td > {{(PatientList.first_name)}}{{(PatientList.last_name)}}</td>
-                    <td> {{(PatientList.phone)}}</td>
-                    <td> {{(PatientList.last_name)}}</td>
+                    <td > {{(PatientList.patientName)}}</td>
+                    <td> {{(PatientList.patientPhone)}}</td>
+                    <td> {{(PatientList.patientEmail)}}</td>
                     <td>{{ (PatientList.patientId) }}</td>
                     <td></td>
                     <td></td>

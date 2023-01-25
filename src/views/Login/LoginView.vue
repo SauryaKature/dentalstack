@@ -6,12 +6,12 @@
     </head>
 
     <body class="body">
-        <img src="../assets/logo.png" alt="" style="filter: invert(); position: relative; float: left; bottom: 50px;">
+        <img src="./Images/logo.png" alt="logo" style="filter: invert(); position: relative; float: left; bottom: 50px;">
 
         <div class="form">
             <form action="" @submit.prevent="handleSubmit">
                 <div class="h1">
-                    <img src="../assets/logo.png" alt="" style="width: 180px; filter: invert();">
+                    <img src="./Images/logo.png" alt="logo" style="width: 180px; filter: invert();">
                 </div>
                 <table>
                     <tr>
@@ -54,7 +54,7 @@
 
 <style scoped>
 .body {
-    background-image: url("../assets/BAckground.webp");
+    background-image: url("./Images/BAckground.webp"); 
     background-size: 100%;
     background-repeat: repeat;
     font-family: 'Roboto', sans-serif;
