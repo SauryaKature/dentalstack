@@ -16,13 +16,14 @@
 				<div class="percent"></div>
 			</div>
 			<div class="steps">
-				<div class="step selected" id="0" @click="select()"> <span>&#10003;</span> Patient Details</div>
-				<div class="step" id="1" @click="select(1)"><span>&#10003;</span> Patient Gallery</div>
-				<div class="step" id="2" @click="select(2)"><span>&#10003;</span> Scan Files</div>
-				<div class="step" id="3" @click="select(3)"><span>&#10003;</span> Case Details</div>
-				<div class="step" id="4" @click="select(4)"><span>&#10003;</span> Treatment Plan</div>
-				<div class="step" id="5" @click="select(5)"> <span>&#10003;</span> Treatment Tracker</div>
-				<div class="step" id="6" @click="select(6)"> <span>&#10003;</span> Appointment</div>
+				<div class="step selected" id="0" @click="this.$router.push({ path: `/PatientDetails` })"> <span>&#10003;</span> Patient Details</div>
+				<div class="step" id="1" @click="this.$router.push({ path: `/PatientGallery` })"> <span>&#10003;</span>  Patient Gallery</div>
+				<div class="step" id="2" @click="this.$router.push({ path: `/PatientScanFiles` })"><span>&#10003;</span> Scan Files</div>
+				<div class="step" id="3" @click="this.$router.push({ path: `/PatientCaseDetails` })"><span>&#10003;</span>Case Details</div>
+				<div class="step" id="4" @click="this.$router.push({ path: `/PatientTreatmentPlan` })"><span>&#10003;</span>Treatment Plan </div>
+				<div class="step" id="5" @click="this.$router.push({ path: `/PatientTreatmentTracker` })"><span>&#10003;</span>  Treatment Tracker</div>
+				<div class="step" id="6" @click="this.$router.push({ path: `/PatientAppointment` })"> <span>&#10003;</span> Appointment</div>
+				
 			</div>
 		</div>
 	</div>
@@ -81,6 +82,7 @@ body {
 	display: flex;
 	justify-content: space-evenly;
 	width: 100%;
+	margin-bottom: 20px;
 }
 
 .step {
@@ -132,45 +134,16 @@ span{display: none;}
 	z-index: 1;
 	transition: width 0.5s;
 }
+ router-view{
+	margin: 10px;
+}
 </style>
 
 <script>
+
 export default {
-	methods: {
-		select(s) {
-			console.log(s)
-			switch (s) {
-				case 1:
-					this.$router.push({ path: `/PatientGallery` })
-					break;
-
-				case 2:
-					this.$router.push({ path: `/PatientScanFiles` })
-					break;
-
-				case 3:
-					this.$router.push({ path: `/PatientCaseDetails` })
-					break;
-
-				case 4:
-					this.$router.push({ path: `/PatientTreatmentPlan` })
-					break;
-
-				case 5:
-					this.$router.push({ path: `/PatientTreatmentTracker` })
-					break;
-
-				case 6:
-					this.$router.push({ path: `/PatientAppointment` })
-					break;
-
-				default:
-					this.$router.push({ path: `/PatientDetails` })
-					break;
-			}
-		}
-	},
-	mounted() {
+	mounted(){
+		
 		this.$router.push({ path: `/PatientDetails` })
 		let els = document.getElementsByClassName('step');
 		let steps = [];
@@ -197,8 +170,10 @@ export default {
 				}
 			});
 		}
+			
 	}
 }
+		
 
 </script>
 

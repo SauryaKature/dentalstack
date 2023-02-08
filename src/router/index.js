@@ -7,6 +7,7 @@ const routes = [
     name: 'login',
     component: LoginView
   },
+
   {
     path: '/signup',
     name: 'signup',

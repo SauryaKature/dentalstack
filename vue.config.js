@@ -21,3 +21,9 @@ module.exports = {
 'use strict'
 
 const { VueLoaderPlugin } = require('vue-loader')
+module.exports = {
+  // options...
+  devServer: {
+        proxy: 'https://192.168.1.35/',
+    }
+}

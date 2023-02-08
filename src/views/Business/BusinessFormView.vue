@@ -105,10 +105,11 @@ export default{
 
 .register{
     width: 100%;
+    background: transparent;
 }
 .head{
    
-    background-color:#30419b;
+    background-color:#11101d;
     height: 40px;
     color: white;
     text-align: start;
@@ -123,9 +124,10 @@ export default{
     padding-left: 20px ;
     display: block;
     margin: 10px 10px 10px 20px;
-    border: 1px solid skyblue;
+    border: 1px solid rgba(135, 207, 235, 0.568);
     border-radius: 5px;
     color: white;
+    background: transparent;
 }
 thead, tbody, tr, th{
     font-size: 12px;
@@ -140,6 +142,7 @@ thead, tbody, tr, th{
     display: flex;
     justify-content: end;
     padding-left: 30px;
+    color: white;
 }
 
 .button{
@@ -149,7 +152,7 @@ thead, tbody, tr, th{
     height: 40px;
     margin: 10px;
     text-align: center;
-    padding-top: 2px;
+    padding-top: 9px;
     box-sizing: border-box;
     border-radius: 5px;
     color: white;

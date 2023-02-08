@@ -1,8 +1,5 @@
 <template>
-  <a href="https://front.codes/" class="logo" target="_blank">
-    <img src="./Images/logo.png" alt="">
-  </a>
-  <div class="section">
+  <div class="templete">
     <div class="container">
       <div class="row full-height justify-content-center">
         <div class="col-12 text-center align-self-center py-5">
@@ -14,90 +11,117 @@
               <div class="card-3d-wrapper">
                 <div class="card-front">
                   <div class="center-wrap">
+                    <img src="./Images/logo.png" alt="" style="filter: invert(); width: 170px; position: relative; bottom: 30px;"><br>
                     <div class="section text-center">
-                      <h4 class="mb-4 pb-3">Admin Sign Up</h4>
+                
                       <div class="form-group">
                         <input type="text" name="adminName" class="form-style" placeholder="Your Full Name" id=""
-                          autocomplete="off" v-model="adminName">
+                          v-model="adminName" minlength="3" maxlength="20" required>
                         <i class="input-icon bx bx-pen"></i>
                       </div>
                       <div class="form-group">
-                        <input type="text" name="adminEmail" class="form-style" placeholder="Your Email" id=""
-                          autocomplete="off" @blur="validateEmail" v-model="adminEmail">
+                        <input type="text" name="adminEmail" class="form-style" placeholder="Your Email" id="" required
+                          v-model="adminEmail" @change="validateEmail(adminEmail)">
                         <i class="input-icon bx bx-envelope-open"></i>
-                        <button class="verify">Verify</button>
-                      </div>
+                        <button class="verify" @click="isMsg = !isMsg">Verify</button>
+                      </div><small style="font-size: 12px; color: white;">{{ validEmail }}</small>
+                      <p style="color:  rgb(0, 212, 0); font-size: 10px;" v-show="isMsg" >A code has been sent to
+                        *******9@gamil.com please verify!</p>
                       <div class="form-group">
-                        <input type="text" name="adminPhone" class="form-style" placeholder="Your Phone" id=""
-                          autocomplete="off" v-model="adminPhone">
+                        <input type="text" name="adminPhone" class="form-style" placeholder="Your Phone" id="" required
+                          v-model="adminPhone">
                         <i class="input-icon bx bx-mobile-alt"></i>
-                        <button class="verify">Verify</button>
+                        <button class="verify" @click="adminOTPValid()">{{ resend }}</button><i class="fa-solid fa-circle-check" id="verified"></i>
+                      </div>
+                      <div class="otp-input-wrapper" id="otp">
+                        <input type="number" v-model="userOtpNumber">
+                        <svg viewBox="0 0 240 1" xmlns="http://www.w3.org/2000/svg">
+                          <line x1="0" y1="0" x2="240" y2="0" stroke="#3e3e3e" stroke-width="1" stroke-dasharray="44,22" />
+                        </svg>
+                        <span id="ten-countdown"></span>
+                        <button class="btn" id="validate" @click="verifyOTP()">Validate</button>
                       </div>
                       <div class="form-group">
-                        <input type="text" name="adminUsername" class="form-style" placeholder="Your Username" id=""
-                          autocomplete="off" v-model="adminUsername">
+                        <input type="text" name="adminUsername" class="form-style" placeholder="Your Username" id="" required v-model="adminUsername">
                         <i class="input-icon bx bx-user"></i>
                       </div>
                       <div class="form-group">
-                        <input type="password" name="adminPassword" class="form-style" placeholder="Your Password" id=""
-                          autocomplete="off" v-model="adminPassword">
+                        <input type="password" name="adminPassword" class="form-style" placeholder="Your Password"
+                          id="password" required v-model="adminPassword">
                         <i class="input-icon bx bx-lock-open"></i>
+                        <span><i class="eye fa-solid fa-eye" v-if="visiblity == true" @click="passwordVisible"></i> <i
+                            class="eye fa-solid fa-eye-slash" v-if="visiblity == false" @click="passwordVisible"></i>
+                        </span>
                       </div>
                       <div class="form-group">
-                        <input type="password" name="adminConfirmPassword" class="form-style"
-                          placeholder="Confirm Your Password" id="" autocomplete="off" v-model="adminConfirmPassword">
+                        <input type="password" name="adminConfirmPassword" class="form-style" required
+                          placeholder="Confirm Your Password" id="confirmPassword" v-model="adminConfirmPassword"
+                          @change="passValid">
                         <i class="input-icon bx bx-lock-open"></i>
+                        <span><i class="eye fa-solid fa-eye" v-if="visiblityForConfirm == true"
+                            @click="confirmPasswordVisible"></i> <i class="eye fa-solid fa-eye-slash"
+                            v-if="visiblityForConfirm == false" @click="confirmPasswordVisible"></i> </span>
                       </div>
+                      <small style="color: red;">{{ message }}</small><br><br>
                       <a class="btn mt-4" @click="adminSubmit()">submit</a>
                     </div>
                   </div>
                 </div>
                 <div class="card-back">
                   <div class="center-wrap">
+                    <img src="./Images/logo.png" alt="" style="filter: invert(); width: 170px; position: relative; bottom: 30px;"><br>
                     <div class="section text-center">
-                      <h4 class="mb-4 pb-3">Doctor Sign Up</h4>
+                
                       <div class="form-group">
                         <input type="text" name="doctorName" class="form-style" placeholder="Your Full Name" id=""
-                          autocomplete="off" v-model="adminName">
+                          v-model="doctorName" minlength="3" maxlength="20" required>
                         <i class="input-icon bx bx-pen"></i>
                       </div>
                       <div class="form-group">
-                        <input type="text" name="doctorEmail" class="form-style" placeholder="Your Email" id=""
-                          autocomplete="off" @blur="validateEmail" v-model="email">
+                        <input type="text" name="doctorEmail" class="form-style" placeholder="Your Email" id="" required
+                          v-model="doctorEmail" @change="validateEmail(adminEmail)">
                         <i class="input-icon bx bx-envelope-open"></i>
-                        <button class="verify" @click="awesome = !awesome">Verify</button>
-                      </div>
-                      <p style="color: green; font-size: 10px;">A code has been sent to *******9@gamil.com please verify!</p>
+                        <button class="verify" @click="isMsg = !isMsg">Verify</button>
+                      </div><small style="font-size: 12px; color: white;">{{ validEmail }}</small>
+                      <p style="color:  rgb(0, 212, 0); font-size: 10px;" v-show="isMsg" >A code has been sent to
+                        *******9@gamil.com please verify!</p>
                       <div class="form-group">
-                        <input type="text" name="doctorPhone" class="form-style" placeholder="Your Phone" id=""
-                          autocomplete="off" v-model="adminPhone">
+                        <input type="text" name="doctorPhone" class="form-style" placeholder="Your Phone" id="" required
+                          v-model="doctorPhone">
                         <i class="input-icon bx bx-mobile-alt"></i>
-                        <button class="verify">Verify</button>
+                        <button class="verify" @click="adminOTPValid()">{{ resend }}</button><i class="fa-solid fa-circle-check" id="verified"></i>
                       </div>
-                      <div class="otp-input-wrapper" v-if="a">
-                        <p style="color: green; font-size: 10px;">A code has been sent to *******9897 please verify!</p>
-                        <input type="text" maxlength="4" pattern="[0-9]*">                       
+                      <div class="otp-input-wrapper" id="otp1">
+                        <input type="number">
                         <svg viewBox="0 0 240 1" xmlns="http://www.w3.org/2000/svg">
-                          <line x1="0" y1="0" x2="240" y2="0" stroke="#3e3e3e" stroke-width="1" stroke-dasharray="44,22" />                          
+                          <line x1="0" y1="0" x2="240" y2="0" stroke="#3e3e3e" stroke-width="1" stroke-dasharray="44,22" />
                         </svg>
-                        <button class="btn" id="validate" @click="awesome = !awesome">Validate</button>
+                        <span id="ten-countdown"></span>
+                        <button class="btn" id="validate" @click="verifyOTP()">Validate</button>
                       </div>
                       <div class="form-group">
-                        <input type="text" name="doctorUsername" class="form-style" placeholder="Your Username" id=""
-                          autocomplete="off" v-model="adminUsername">
+                        <input type="text" name="doctorUsername" class="form-style" placeholder="Your Username" id="" required v-model="doctorUsername">
                         <i class="input-icon bx bx-user"></i>
                       </div>
                       <div class="form-group">
                         <input type="password" name="doctorPassword" class="form-style" placeholder="Your Password"
-                          id="" autocomplete="off" v-model="adminPassword">
+                          id="password" required v-model="doctorPassword">
                         <i class="input-icon bx bx-lock-open"></i>
+                        <span><i class="eye fa-solid fa-eye" v-if="visiblity == true" @click="passwordVisible"></i> <i
+                            class="eye fa-solid fa-eye-slash" v-if="visiblity == false" @click="passwordVisible"></i>
+                        </span>
                       </div>
                       <div class="form-group">
-                        <input type="password" name="doctorConfirmPassword" class="form-style"
-                          placeholder="Confirm Your Password" id="" autocomplete="off" v-model="doctorConfirmPassword">
+                        <input type="password" name="doctorConfirmPassword" class="form-style" required
+                          placeholder="Confirm Your Password" id="confirmPassword" v-model="doctorConfirmPassword"
+                          @change="passValid">
                         <i class="input-icon bx bx-lock-open"></i>
+                        <span><i class="eye fa-solid fa-eye" v-if="visiblityForConfirm == true"
+                            @click="confirmPasswordVisible"></i> <i class="eye fa-solid fa-eye-slash"
+                            v-if="visiblityForConfirm == false" @click="confirmPasswordVisible"></i> </span>
                       </div>
-                      <a class="btn mt-4" @click="doctorSubmit()">submit</a>
+                      <small style="color: red;">{{ message }}</small><br><br>
+                      <a class="btn mt-4" @click="adminSubmit()">submit</a>
                     </div>
                   </div>
                 </div>
@@ -108,6 +132,7 @@
       </div>
     </div>
   </div>
+
 </template>
 <script >
 /* eslint-disable */
@@ -118,18 +143,39 @@ export default {
 
   data() {
     return {
-      msg: '',
-      allow: '',
+      isShow: false,
+      isMsg: false,
+      message: '',
+      resend: 'Verify',
+      visiblity: true,
+      visiblityForConfirm: true,
+      verified: '',
+      validEmail:''
     }
   },
-  watch: {
-    email(value) {
-      // binding this to the data value in the email input
-      this.email = value;
-      this.validateEmail(value);
-    }
-  },
+
   methods: {
+
+    verifyOTP() {
+      if (this.random === this.userOtpNumber) {
+        this.resend = "";
+        document.getElementById("verified").style.display = "inline-block"
+        this.verified = "OTP verified Successfull"
+        document.getElementById("otp").style.display = "none"
+      } else {
+        this.verified = "Retry again...!!! OTP incorrect...!"
+        document.getElementById("otp").style.display = "none"
+      }
+      if (this.random === this.userOtpNumber) {
+        this.resend = "";
+        document.getElementById("verified").style.display = "inline-block"
+        this.verified = "OTP verified Successfull"
+        document.getElementById("otp1").style.display = "none"
+      } else {
+        this.verified = "Retry again...!!! OTP incorrect...!"
+        document.getElementById("otp1").style.display = "none"
+      }
+    },
     async adminSubmit() {
       this.$router.push({ path: `/` })
       let result = await axios.post("http://localhost:8080/saveDoctor", {
@@ -166,13 +212,108 @@ export default {
       }
       this.$router.push({ path: `/` })
     },
+    adminOTPValid() {
+      document.getElementById("otp").style.display = "inline-block"
 
-    opt() {
-      this.allow = 't';
-    }
+      const random = Math.floor(Math.random() * 9000 + 1000);
+      console.log(random)
+      axios.get(`https://smsozone.com/api/mt/SendSMS?APIKey=XtnMBLYVG0mj6YUdO8dsqgDEMOAPI&senderid=SMSPXL&channel=Trans&DCS=0&flashsms=0&number=${this.adminPhone}&text=Use%20Code%20${random}%20to%20verify%20or%20login%20your%20account.%0A${random}%0ATeam%20PXLSMS&route=5`, {
+
+      }).then(response => {
+        console.log(response.data)
+      })
+      this.timer()
+    },
+    doctorOTPValid() {
+      document.getElementById("otp1").style.display = "inline-block"
+
+      const random = Math.floor(Math.random() * 9000 + 1000);
+      console.log(random)
+      axios.get(`https://smsozone.com/api/mt/SendSMS?APIKey=XtnMBLYVG0mj6YUdO8dsqgDEMOAPI&senderid=SMSPXL&channel=Trans&DCS=0&flashsms=0&number=${this.doctorPhone}&text=Use%20Code%20${random}%20to%20verify%20or%20login%20your%20account.%0A${random}%0ATeam%20PXLSMS&route=5`, {
+
+      }).then(response => {
+        console.log(response.data)
+      })
+      this.timer()
+    },
+    timer() {
+      function countdown(elementName, minutes, seconds) {
+        var element, endTime, hours, mins, msLeft, time;
+
+        function twoDigits(n) {
+          return (n <= 9 ? "0" + n : n);
+        }
+
+        function updateTimer() {
+          msLeft = endTime - (+new Date);
+          if (msLeft < 1000) {
+            element.innerHTML = "Time is up!";
+            document.getElementById("otp").style.display = "none"
+            this.router.go()
+          } else {
+            time = new Date(msLeft);
+            hours = time.getUTCHours();
+            mins = time.getUTCMinutes();
+            element.innerHTML = (hours ? hours + ':' + twoDigits(mins) : mins) + ':' + twoDigits(time.getUTCSeconds());
+            setTimeout(updateTimer, time.getUTCMilliseconds() + 500);
+          }
+        }
+        element = document.getElementById(elementName);
+        endTime = (+new Date) + 1000 * (60 * minutes + seconds) + 500;
+        updateTimer();
+      }
+      countdown("ten-countdown", 10, 0);
+    },
+    passValid() {
+      if (this.adminPassword != this.adminConfirmPassword) {
+        this.message = "Password and Confirm Password does not match"
+      }
+      else if (doctorPassword != doctorConfirmPassword) {
+        this.message = "Password and Confirm Password does not match"
+      }
+      else {
+        this.message = ''
+      }
+    },
+    passwordVisible() {
+      var x = document.getElementById("password");
+      if (x.type === "password") {
+        x.type = "text";
+        this.visiblity = false;
+      } else {
+        x.type = "password";
+        this.visiblity = true;
+      }
+    },
+    confirmPasswordVisible() {
+      var x = document.getElementById("confirmPassword");
+      if (x.type === "password") {
+        x.type = "text";
+        this.visiblityForConfirm = false;
+      } else {
+        x.type = "password";
+        this.visiblityForConfirm = true;
+      }
+    },
+    validateEmail(email) {
+      console.log(email)
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      var a = re.test(String(email).toLowerCase());
+      if (a) {
+        console.log(a)
+        this.validEmail="";
+      } else {
+        console.log(a)
+        this.validEmail="Email format is not valid!...Please Enter Email Again";
+      }
+    },
+
+
+  },
+  mounted() {
+
   }
 }
-
 </script>
 <style scoped>
 /* Please ❤ this if you like it! */
@@ -185,7 +326,7 @@ body {
   font-size: 15px;
   line-height: 1.7;
   color: #c4c3ca;
-  background-color: #1f2029;
+  background-color: #9c75a1;
   overflow-x: hidden;
 }
 
@@ -222,7 +363,7 @@ h6 span {
   padding: 0 20px;
   text-transform: uppercase;
   font-weight: 700;
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 20px;
 }
 
@@ -230,6 +371,7 @@ h6 span {
   position: relative;
   width: 100%;
   display: block;
+
 }
 
 .full-height {
@@ -283,9 +425,9 @@ h6 span {
 
 .card-3d-wrap {
   position: relative;
-  width: 500px;
+  width: 600px;
   max-width: 100%;
-  height: 600px;
+  height: 700px;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   perspective: 800px;
@@ -307,8 +449,8 @@ h6 span {
 .card-back {
   width: 100%;
   height: 100%;
-  background-color: #2a2b38;
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg");
+  background-color: #141222;
+  /* background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg"); */
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: 300%;
@@ -322,6 +464,15 @@ h6 span {
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
+  box-shadow: 1px 1px 35px #acacac91;
+}
+
+#verified {
+  display: none;
+  color: rgb(2, 175, 2);
+  position: absolute;
+  left: 470px;
+  bottom: 17px;
 }
 
 .card-back {
@@ -350,13 +501,22 @@ h6 span {
   padding: 0;
 }
 
-#validate{
+#validate {
   width: 80px;
   height: 20px;
   font-size: 10px;
   position: relative;
-  bottom: 30px;
-  left: 240px;
+  bottom: 23px;
+    left: 97px;
+}
+
+#otp {
+  margin-left: 100px;
+}
+
+#ten-countdown {
+  color: rgb(255, 20, 20);
+  padding-left: 100px;
 }
 
 input::-webkit-outer-spin-button,
@@ -377,11 +537,11 @@ input::-webkit-inner-spin-button {
   letter-spacing: 0.5px;
   outline: none;
   color: #c4c3ca;
-  background-color: #1f2029;
+  background-color: #1f202900;
   border: none;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
-  box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
+  box-shadow: 0px 0px 1px #ebe4ce3d;
 }
 
 .form-style:focus,
@@ -404,8 +564,22 @@ input::-webkit-inner-spin-button {
   transition: all 200ms linear;
 }
 
+.eye {
+  position: absolute;
+  top: 0;
+  left: 480px;
+  height: 48px;
+  font-size: 16px;
+  line-height: 48px;
+  text-align: left;
+  color: #ffeba7;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+
+}
+
 .form-group input:-ms-input-placeholder {
-  color: #c4c3ca;
+  color: #fddf7c;
   opacity: 0.7;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
@@ -461,7 +635,7 @@ input::-webkit-inner-spin-button {
   border: none;
   position: absolute;
   top: 0;
-  left: 350px;
+  left: 450px;
   height: 48px;
   font-size: 14px;
   line-height: 48px;
@@ -502,8 +676,8 @@ input::-webkit-inner-spin-button {
 
 .btn:active,
 .btn:focus {
-  background-color: #33293a;
-  color: #ffeba7;
+  background-color: #ffdd6e;
+  color: #33293a;
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
 }
 
@@ -530,7 +704,7 @@ input::-webkit-inner-spin-button {
 }
 
 .otp-input-wrapper {
-  width: 240px;
+  width: 400px;
   text-align: left;
   display: inline-block;
 }
@@ -558,5 +732,14 @@ input::-webkit-inner-spin-button {
   display: block;
   width: 210px;
   height: 2px;
+}
+
+#otp {
+  display: none;
+}
+
+#otp1 {
+  display: none;
+  margin-left: 100px;
 }
 </style>

@@ -6,7 +6,7 @@
     </head> 
    <home-view></home-view>
      <body id="app">
-        <table table table-bordered table-dark table-striped class="table">
+        <table class="table">
             <thead>
                <tr>
                 <th>Name</th>
@@ -53,9 +53,9 @@ export default{
         // let result = await axios.get("http://localhost:8080/findAllD");
         // this.list = result.data
 
-        axios.get('http://localhost:8080/findAllD',{
+        axios.get('http://192.168.1.35:8080/findAllDoctor',{
      headers:{
-      Authorization: 'Bearer' +localStorage.getItem('token')
+      Authorization: `Bearer ` +localStorage.getItem('token')
  
   }
 }).then(response => {
@@ -80,6 +80,7 @@ export default{
 }
 .table{
     width: 100%;
+    background: transparent;
 }
 .router-link{
     text-decoration: none;
@@ -103,7 +104,8 @@ table {
 }
 
 td, th {
-  border: 1px solid #dddddd;
+border: 1px rgba(255, 255, 255, 0.05) solid;
+color: #fff;
   text-align: left;
   padding: 8px;
   text-align: center;
@@ -115,10 +117,4 @@ thead th{
     border: 1px rgba(255, 255, 255, 0.05) solid;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-tbody td,tr{
-    border: 1px rgba(255, 255, 255, 0.05) solid;
-}
 </style>

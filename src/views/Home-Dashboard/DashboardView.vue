@@ -83,8 +83,13 @@
             </div>
         </div><br>
         <div class="sub2">
-
-        </div><br>
+            <div class="chart-wrapper">
+                <BarChart />
+            </div>
+            <div class="chart-wrapper">
+                <BarChart />
+            </div>
+        </div>
         <div class="sub3">
             <div class="box">
                 <h6>Bussiness</h6>
@@ -98,10 +103,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="( business, index ) in lists" :key="index">
+                        <tr v-for="( business, index ) in businessList" :key="index">
                             <td>{{(business.businessName) }}</td>
-                            <td>{{ (business.businessDateOfCreation) }}</td>
-                            <td></td>
+                            <td>{{ (business.businessPhone) }}</td>
+                            <td>{{ (business.businessEmail) }}</td>
                             <td>
                                 <router-link class="router-link" to="WebsocketView"><i
                                         class="fa-solid fa-comment"></i></router-link>
@@ -201,16 +206,61 @@
                 </table>
             </div>
         </div><br>
+        
+
+
     </div>
 </template>
 
 <script>
+import BarChart from './BarChart.vue'
 
+import axios from 'axios';
+export default {
+   components: { BarChart },
+   name: "AdminListView",
+   data(){
+       return{
+           adminList:[],
+           businessList:[]
+       }
+   },
+   async mounted(){
+       axios.get('http://localhost:8080/alladmins').then(response => {
+           this.adminList = response.data;
+           console.log(response.data);
+       })
+       .catch(error =>{
+           this.errors.push(error);
+           
+       }),
+       axios.get('http://localhost:8080/getAllBusiness').then(response => {
+           this.businessList = response.data.businesses;
+           console.log(response.data);
+       })
+       .catch(error =>{
+           this.errors.push(error);
+           
+       })
+   },
+
+   
+}
 
 </script>
 
 
-<style>
+<style scoped>
+.chart-wrapper {
+    width: 45%;
+    height: 400px;
+}
+
+.echarts {
+    width: 100%;
+    height: 100%;
+}
+
 .main {
     width: 100%;
     height: 100%;
@@ -232,6 +282,7 @@
     width: 48%;
     height: 250px;
     border: black 1px solid;
+    overflow-y: scroll;
 }
 
 .sub1 .box,
@@ -241,6 +292,7 @@
     border: black 1px solid;
     padding: 30px;
     box-sizing: border-box;
+   
 }
 
 .box {
@@ -254,12 +306,17 @@
 .box .content {
     display: flex;
     justify-content: space-between;
+
 }
-.table
-{
+
+.table {
     color: #fff;
     overflow-y: scroll;
     font-size: 12px;
 }
-
+.table td , .router-link{
+    color: rgb(167, 163, 163);
+    padding: 2px;
+    border: 0.3px solid rgba(48, 31, 66, 0.315);
+}
 </style>

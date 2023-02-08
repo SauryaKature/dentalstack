@@ -61,9 +61,9 @@
           </div>
           <ul class="sub-menu">
             <li><button class="link_name"><router-link class="sidelist" to="#">Business</router-link></button></li>
-            <li><button><router-link to="AdminRegister" class="dropdown-containt">Business
+            <li><button><router-link to="BusinessRegister" class="dropdown-containt">Business
                   Registration</router-link></button></li>
-            <li><button><router-link to="AdminList" class="dropdown-containt">Business List</router-link></button></li>
+            <li><button><router-link to="BUsinessList" class="dropdown-containt">Business List</router-link></button></li>
           </ul>
         </li>
         <li>
@@ -135,15 +135,26 @@
       <hr style="color: white;">
       <article>
         <router-view></router-view>
+        
       </article>
     </section>
   </body>
 
-  </html>
+  </html> 
 </template>
 
 <script>
+/* eslint-disable */
+import axios from 'axios';
 export default {
+  name:'Home',
+  async created(){
+    const response = await axios.get('user', {
+      headers:{
+        Authorization: `Bearer `+localStorage.getItem('token')
+      }
+    })
+  },
   mounted() {
     if (this.$router === `/`) {
       this.$router.push({ path: `/Dashboard` })
@@ -161,16 +172,12 @@ export default {
     open() {
       document.querySelector(".sidebar").classList.toggle("close");
     },
-
+    
   }
 }
-
-
-
-
 </script>
 
-<style>
+<style scoped>
 /* Google Fonts Import Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 

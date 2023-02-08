@@ -67,6 +67,7 @@ export default{
 
 <style scoped>
 
+
 #app{
    width: 100%;
 }
@@ -104,14 +105,14 @@ td, th {
 }
 
 thead th{
-   background-color: #30419b;
+   background-color: #11101d;
    color: rgb(194, 194, 194);
-   border: rgb(124, 124, 124) 1px solid;
+   border: 1px rgba(255, 255, 255, 0.05) solid;
    font-size: 14px;
 }
 
 
 tbody td,tr{
-   border: rgb(124, 124, 124) 1px solid;
+    border: 1px rgba(255, 255, 255, 0.05) solid;
 }
 </style>
