@@ -132,7 +132,7 @@
         <i class='bx bx-menu' @click="open()" style="color: white;"></i>
         <img src="./Icons/logo.png" style="height: 50px; filter: invert();" alt="">
       </div>
-      <hr style="color: white;">
+      <hr style="color: white; margin: 10px;">
       <article>
         <router-view></router-view>
         

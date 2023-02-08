@@ -24,6 +24,17 @@ const { VueLoaderPlugin } = require('vue-loader')
 module.exports = {
   // options...
   devServer: {
-        proxy: 'https://192.168.1.35/',
+        proxy: 'https://192.168.1.40/',
     }
 }
+
+module.exports = {
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'https://192.168.1.40/',
+        changeOrigin: true,
+      },
+    },
+  },
+};

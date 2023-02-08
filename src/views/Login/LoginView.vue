@@ -27,7 +27,7 @@
                         <td><button class="button" type="submit" value="Login">Login</button></td>
                     </tr>
                 </table>
-
+            </form>
 
                 <br><br>
                 <hr>
@@ -39,7 +39,7 @@
 
                     <router-link class="router-link" to="PatientDetailsForm">Biba</router-link>
                 </div>
-            </form>
+           
         </div>
     </body>
 
@@ -60,8 +60,24 @@ export default {
         }
     },
     methods: {
+        // async handleSubmit() {
+        //     try {
+        //         const response = await axios.post('http://192.168.1.40:8080/api/login', {
+        //             username: this.username,
+        //             password: this.password,
+        //         });
+        //         const token = response.data.token;
+        //         // Store the token in local storage or a cookie
+        //         localStorage.setItem('token', token);
+        //         // Redirect to the protected page
+        //         this.$router.push('/HomePage');
+        //     } catch (err) {
+        //         this.error = err.message;
+        //     }
+        // },
         async handleSubmit() {
-            const response=await axios.post('http://192.168.1.40:8080/api/login', {
+            try {
+                await axios.post('http://192.168.1.40:8080/api/login', {
                 password: this.password,
                 username: this.username
             }).then(response => {
@@ -70,24 +86,24 @@ export default {
                 let token = JSON.parse(t);
                 localStorage.setItem('token',token.jwtToken );
                  this.$router.push({path: "/HomePage"})
-                console.log(localStorage.getItem('token'))
-                console.log(t);
-                console.log(token)
             })
+            } catch (error) {
+                this.error = error.message; 
+            }
 
         },
         async verifyOTP() {
             await axios.post('http://192.168.1.40:8080/api/verifyOTP', {
                 hiii: this.hiii,
-                username:"sdvcsdvsdav",
-                password:"wehvjsd"           
+                username: "sdvcsdvsdav",
+                password: "wehvjsd"
             }).then(response => {
                 if (response.data) {
-                  this. verified = "OTP verified Successfull"
-                  // document.getElementById("otp").style.display="none"
+                    this.verified = "OTP verified Successfull"
+                    // document.getElementById("otp").style.display="none"
                 } else {
-                  this.verified ="Retry again...!!! OTP incorrect...!"
-                  // document.getElementById("otp").style.display="none"
+                    this.verified = "Retry again...!!! OTP incorrect...!"
+                    // document.getElementById("otp").style.display="none"
                 }
             })
 

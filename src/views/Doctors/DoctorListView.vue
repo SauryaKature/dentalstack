@@ -32,7 +32,7 @@
                     <td>
                         <router-link class="router-link"  to="WebsocketView"><i class="fa-solid fa-comment"></i></router-link>
                         <router-link class="router-link"  to="GmailSenderView"> <i class="fa-solid fa-envelope"></i></router-link>
-                        <router-link class="router-link"  to="DoctorRegisterView"><i class="fa-solid fa-pencil"></i></router-link>
+                        <router-link class="router-link"  to="PatientDetailsForm"><i class="fa-solid fa-pencil"></i></router-link>
                     </td>
                 </tr>
             </tbody>
@@ -53,8 +53,8 @@ export default{
         // let result = await axios.get("http://localhost:8080/findAllD");
         // this.list = result.data
 
-        axios.get('http://192.168.1.35:8080/findAllDoctor',{
-     headers:{
+        axios.get('http://192.168.1.40:8080/findAllDoctor',{
+    headers:{
       Authorization: `Bearer ` +localStorage.getItem('token')
  
   }

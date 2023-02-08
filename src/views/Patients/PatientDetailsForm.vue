@@ -9,6 +9,57 @@
 				<div class="job">Founder</div>
 			</div>
 		</div>
+		<div class="profileInfo"> 
+			<h4>Patient Info</h4>
+			<table class="table">
+				<thead>
+					<th>
+						<small> <i class="fa-solid fa-envelope"></i> Email :</small>
+					</th>
+					<th>
+						<small> <i class="fa-solid fa-phone"></i> Phone :</small>
+					</th>
+					<th>
+						<small><i class="fa-solid fa-cake"></i> Date of Birth :</small>
+					</th>
+					<th>
+						<small><i class="fa-solid fa-location"></i> Pincode :</small>
+					</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table><hr>
+			<table class="table">
+				<thead>
+					<th>
+						<small><i class="fa-solid fa-user"></i> External Doctor :</small>
+					</th>
+					<th>
+						<small><i class="fa-solid fa-user"></i> Internal Doctor :</small>
+					</th>
+					<th>
+						<small> <i class="fa-solid fa-user"></i> Affliate Clinic : </small>
+					</th>
+					<th>
+						<small> <i class="fa-solid fa-user"></i> User Status :</small>
+					</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div><br>
 	<div>
 		<div class="container">
@@ -31,6 +82,17 @@
 </template>
 
 <style scoped>
+.table{
+  font-family: arial, sans-serif;
+  font-size: 12px;
+  text-align: center;
+  color: #fff;
+  border: none;
+}
+.table td , .table th{
+	border: none;
+	border-right: 1px solid #fff;
+}
 body {
 	margin: 0;
 	padding: 0;
@@ -39,6 +101,7 @@ body {
 }
 
 .pDetails {
+	margin-top: 20px;
 	height: 250px;
 	width: 100%;
 	border: 1px solid rgb(187, 187, 187);
@@ -71,6 +134,9 @@ body {
   font-size: 15px;
   font-weight: 500;
   white-space: nowrap;
+}
+.profileInfo{
+	color: #fff;
 }
 .container {
 	width: 100%;

@@ -103,7 +103,11 @@ export default {
         
 
     },async mounted() {
-            axios.get('http://localhost:8080/getAllAppointment', {}).then(response => {
+            axios.get('http://192.168.1.40:8080/getAllAppointment', { 
+                headers: {
+                    Authorization: `Bearer ` + localStorage.getItem('token')
+
+                }}).then(response => {
                 this.listAllAppointment = response.data;
                 console.log(response.data);
             })
