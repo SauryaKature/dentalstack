@@ -59,6 +59,11 @@ const routes = [
         component: () => import('../views/Clinics/ClinicListView.vue')
       },
       {
+        path: '/DoctorDashboard',
+        name: 'DoctorDashboard',
+        component: () => import('../views/Doctors/DoctorDashboard.vue')
+      },
+      {
         path: '/DoctorRegister',
         name: 'DoctorRegister',
         component: () => import('../views/Doctors/DoctorRegistrationView.vue')

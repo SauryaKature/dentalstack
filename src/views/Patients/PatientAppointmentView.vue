@@ -1,9 +1,9 @@
 <template>
-
     <div class="tab-pane " id="tab-appointments">
         <div class="row">
-            <div class="col-lg-5 col-sm-12 appointments_summery" >
-                <div class="highlight"  v-for="(listAll, index) in listAllAppointment" :key="index">
+            <div class="col-lg-5 col-sm-12 appointments_summery" id="left">
+                <div id="left">
+                    <div class="highlight"  v-for="(listAll, index) in listAllAppointment" :key="index">
                     
                     <h6>Appointment ID :{{ listAll.appointmentID }}<small class="pull-right"><b>Appointment Date: {{
                             listAll.date
@@ -21,9 +21,11 @@
                             class="fa fa-trash"></i>
                     </button>
                 </div>
+                </div>
             </div>
             <div class="col-lg-7 col-sm-12">
-                <div class="form-group">
+                <div id="right">
+                    <div class="form-group">
                     <label class="col-sm-3 control-label">Title</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" v-model="title">
@@ -57,6 +59,8 @@
                 </div>
                 <br><br><br>
                 <button class="btn btn-success pull-right" id="button" v-on:click="update(list.appointmentID)">Update</button>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -143,10 +147,17 @@ export default {
     margin-bottom: 1rem;
     background-color: #f8f9fa;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    border-radius: 10px;
-    border: 1px solid #c7c7c7;
+    border-radius: 10px;   
     overflow: hidden;
     text-align: left;
+}
+
+#right{
+    border: 1px solid #c7c7c7;
+    border-radius: 25px;
+    margin: 10px;
+    padding: 30px;
+    
 }
 .form-group{
     display: flex;
@@ -164,7 +175,9 @@ input :focus{
 }
 
 .pull-right{
-    float: right;
+   position: absolute;
+   right: 4%;
+   bottom: 4%;
 }
 .btn:hover{
    box-shadow: 1px 1px 8px #777777;

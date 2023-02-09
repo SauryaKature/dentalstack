@@ -7,57 +7,80 @@
 			<div class="name-job">
 				<div class="profile_name">Rishang Jain</div>
 				<div class="job">Founder</div>
+				<div class="button">
+					<button class="button-switch" id="left-button" @click="switchs(1)">Treatment Progress & Status</button>
+					<button class="button-switch" id="right-button" @click="switchs(2)">Patient Info</button>
+				</div>
 			</div>
 		</div>
-		<div class="profileInfo"> 
-			<h4>Patient Info</h4>
+		<div class="profileInfo" id="info"> 
+			<h5 style="background: #3e3c63; padding: 5px;">Patient Info</h5>
 			<table class="table">
-				<thead>
+				<div>
 					<th>
-						<small> <i class="fa-solid fa-envelope"></i> Email :</small>
+						<p> <i class="fa-solid fa-envelope"></i> Email :</p>
 					</th>
 					<th>
-						<small> <i class="fa-solid fa-phone"></i> Phone :</small>
+						<p> <i class="fa-solid fa-phone"></i> Phone :</p>
 					</th>
 					<th>
-						<small><i class="fa-solid fa-cake"></i> Date of Birth :</small>
+						<p><i class="fa-solid fa-cake"></i> Date of Birth :</p>
 					</th>
 					<th>
-						<small><i class="fa-solid fa-location"></i> Pincode :</small>
+						<p><i class="fa-solid fa-location"></i> Pincode :</p>
 					</th>
-				</thead>
-				<tbody>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-				</tbody>
-			</table><hr>
+				</div>
+			</table> 
 			<table class="table">
-				<thead>
+				<div>
 					<th>
-						<small><i class="fa-solid fa-user"></i> External Doctor :</small>
+						<p><i class="fa-solid fa-user"></i> External Doctor :</p>
 					</th>
 					<th>
-						<small><i class="fa-solid fa-user"></i> Internal Doctor :</small>
+						<p><i class="fa-solid fa-user"></i> Internal Doctor :</p>
 					</th>
 					<th>
-						<small> <i class="fa-solid fa-user"></i> Affliate Clinic : </small>
+						<p> <i class="fa-solid fa-user"></i> Affliate Clinic : </p>
 					</th>
 					<th>
-						<small> <i class="fa-solid fa-user"></i> User Status :</small>
+						<p> <i class="fa-solid fa-user"></i> User Status :</p>
 					</th>
-				</thead>
-				<tbody>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-				</tbody>
+				</div>
+			</table>
+		</div>
+		<div class="profileInfo" id="moreInfo"> 
+			<h5 style="background: #3e3c63; padding: 5px;">Treatment Progress & Status</h5>
+			<table class="table">
+				<div>
+					<th>
+						<p> <i class="fa-sharp fa-solid fa-pen-to-square"></i> Cheif Complaint :</p>
+					</th>
+					<th>
+						<p><i class="fa-solid fa-tooth"></i> Aligner Status :</p>
+					</th>
+					<th>
+						<p><i class="fa-solid fa-teeth"></i> Aligners left milestone :</p>
+					</th>
+					<th>
+						<p><i class="fa-solid fa-calendar-days"></i> Estimated Treatment Completion date :</p>
+					</th>
+				</div>
+			</table>
+			<table class="table">
+				<div>
+					<th>
+						<p><i class="fa-solid fa-calendar-days"></i> Current Aligner Date :</p>
+					</th>
+					<th>
+						<p><i class="fa-solid fa-calendar-days"></i> Next Aligner Change Date :</p>
+					</th>
+					<th>
+						<p><i class="fa-sharp fa-solid fa-clock"></i> Time elapsed : </p>
+					</th>
+					<th>
+						<p><i class="fa-solid fa-hourglass-half"></i> Avarage Hour per Day :</p>
+					</th>
+				</div>
 			</table>
 		</div>
 	</div><br>
@@ -85,13 +108,16 @@
 .table{
   font-family: arial, sans-serif;
   font-size: 12px;
-  text-align: center;
+  text-align: start;
   color: #fff;
   border: none;
 }
 .table td , .table th{
 	border: none;
-	border-right: 1px solid #fff;
+	border-right: 0.5px solid #dddddd75;
+	width: 25%;
+	padding: 1%;
+	height: 2%;
 }
 body {
 	margin: 0;
@@ -102,8 +128,9 @@ body {
 
 .pDetails {
 	margin-top: 20px;
-	height: 250px;
+
 	width: 100%;
+	padding: 5px;
 	border: 1px solid rgb(187, 187, 187);
 	border-radius: 16px;
 }
@@ -114,15 +141,18 @@ body {
   justify-content: space-between;
   padding:10px 60px 8px 10px;
   transition: all 0.5s ease;
+  box-sizing: border-box;
 }
 .profile-details img {
-	height: 52px;
-	width: 52px;
+	height: 62px;
+	width: 62px;
 	object-fit: cover;
 	border-radius: 16px;
 	margin: 0 14px 0 12px;
 	background: #1d1b31;
 	transition: all 0.5s ease;
+	box-sizing: border-box;
+	border: 10px solid rgba(32, 22, 44, 0.432);
 }
 .profile-details .profile-content{
   display: flex;
@@ -130,10 +160,11 @@ body {
 }
 .profile-details .profile_name,
 .profile-details .job{
-  color: rgb(105, 105, 105);
+  color: rgb(255, 255, 255);
   font-size: 15px;
   font-weight: 500;
   white-space: nowrap;
+
 }
 .profileInfo{
 	color: #fff;
@@ -203,6 +234,36 @@ span{display: none;}
  router-view{
 	margin: 10px;
 }
+.button{
+	position: absolute;
+	right: 2%;
+	top: 120px;
+}
+.button-switch{
+	height: 40px;
+	width: 250px;
+	background: transparent;
+	color: #fff;
+	border: #ffffff60 1px solid;
+}
+.button-switch:hover{
+	background: #3e3c63
+}
+#left-button{
+	border-start-start-radius: 25px;
+	border-end-start-radius: 25px;
+}
+#right-button{
+	width: 140px;
+	border-end-end-radius: 25px;
+	border-start-end-radius: 25px;
+	background: #3e3c63;
+}
+#moreInfo{
+	display: none;
+}
+
+
 </style>
 
 <script>
@@ -237,6 +298,21 @@ export default {
 			});
 		}
 			
+	},
+	methods:{
+		switchs(a){
+			if (a===1) {
+				document.getElementById('info').style.display="none";
+				document.getElementById('moreInfo').style.display="block";
+				document.getElementById('right-button').style.background="none";
+				document.getElementById('left-button').style.background="#3e3c63"
+			} else {
+				document.getElementById('moreInfo').style.display="none";
+				document.getElementById('info').style.display="block";
+				document.getElementById('left-button').style.background="none";
+				document.getElementById('right-button').style.background="#3e3c63";
+			}
+		}
 	}
 }
 		
