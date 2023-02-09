@@ -194,10 +194,8 @@ export default {
     padding-left: 30px;
     padding-top: 50px;
     border: 1px #fff solid;
+    border-radius: 20px;
 }
-
-
-
 .inputs {
     width: 600px;
     height: 30px;
@@ -222,14 +220,16 @@ export default {
 
 .table td {
     border: 1px solid rgb(155, 155, 155);
-    border-radius: 45px;
-    height: 40px;
-  
+    height: 40px;  
     color: #fff;
     font-size: 12px;
     text-align: left;
+    border-radius: 15px;
 }
 
+.table{
+    border-radius: 15px;
+}
 #button{
     position: relative;
     left: 350%;
